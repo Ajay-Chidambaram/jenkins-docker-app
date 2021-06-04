@@ -2,7 +2,7 @@
 
 ## `Description`
 
-The objective of this assignment is to deploy a Custom image which has php files in it with apache server and a mysql image using a compose file in swarm mode. Then to establish a connection between the mysql and apache server.   
+The objective of this assignment is to deploy a Custom image which has php files in it with apache server and a mysql image using a compose file in swarm mode. Then to establish a connection between the mysql and apache server...  
 
 ## `Create Custom Image`
 
