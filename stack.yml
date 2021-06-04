@@ -1,11 +1,9 @@
-version: '3.9'
+version: '3.2'
 services:
   website:
     image: phpimg:latest
     volumes:
       - ./src:/var/www/html/
-    deploy:
-      replicas: 1
     depends_on:
       - mysql
     env_file:
