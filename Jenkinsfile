@@ -4,7 +4,7 @@ pipeline {
         registryCredential = 'docker'
         dockerImage = ''
     }
-    
+
     agent {
         label "slave"
     }
@@ -18,13 +18,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'docker build -t phpimg:latest /home/ubuntu/jenkins_slave/workspace/task/src/'
+                sh 'docker build -t phpimg:latest /home/ubuntu/jenkins_slave/workspace/task/jenkins-docker-app/src/'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'cd /home/ubuntu/jenkins_slave/task/'
+                sh 'cd /home/ubuntu/jenkins_slave/task/jenkins-docker-app'
                 sh 'docker-compose up -d'
             }
         }
