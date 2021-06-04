@@ -14,7 +14,6 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'sudo rm -r /home/ubuntu/jenkins_slave/workspace/task/*'
                         sh 'docker-compose -f /home/ubuntu/jenkins_slave/workspace/task/jenkins-docker-app/docker-compose.yml down'
                     } catch(Exception e) {
                         echo "Error ... " + e.toString()
