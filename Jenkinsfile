@@ -10,9 +10,24 @@ pipeline {
     }
 
     stages {
+        stage('Clean-up') {
+            steps {
+                script {
+                    try {
+                        sh 'sudo rm -r /home/ubuntu/jenkins_slave/workspace/task/*'
+                        sh 'docker-compose -f /home/ubuntu/jenkins_slave/workspace/task/jenkins-docker-app/docker-compose.yml down'
+                    } catch(Excception e) {
+                        echo "Error ... " + e.toString()
+                    }
+                }
+            }
+        }
+
         stage('Clone') {
             steps {
-                git 'https://github.com/Ajay-Chidambaram/jenkins-docker-app.git'
+                script {
+                    sh 'git clone https://github.com/Ajay-Chidambaram/jenkins-docker-app.git'
+                }
             }
         }
 
@@ -24,8 +39,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'cd /home/ubuntu/jenkins_slave/task/jenkins-docker-app'
-                sh 'docker-compose up -d'
+                sh 'docker-compose -f /home/ubuntu/jenkins_slave/workspace/task/jenkins-docker-app/docker-compose.yml up -d'
             }
         }
     }
