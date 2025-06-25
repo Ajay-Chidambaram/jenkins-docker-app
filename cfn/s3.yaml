@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create an S3 bucket with a unique name
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'aws-demo-s3-xyzabc123-us-east-1'
+      VersioningConfiguration:
+        Status: Suspended
+
+Outputs:
+  BucketName:
+    Description: Name of the sample Amazon S3 bucket.
+    Value: !Ref S3Bucket
